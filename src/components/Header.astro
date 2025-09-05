@@ -1,0 +1,92 @@
+<header class="fixed top-0 left-0 w-full z-40 bg-transparent">
+  <div class="max-w-5xl mx-auto flex flex-row justify-end px-3 py-5 items-center">
+    <nav id="landing-header" class="font-sans font-[400] mr-5 space-x-9 text-black dark:text-white flex items-center">
+    <label class="switch">
+        <input id="theme-toggle" type="checkbox" />
+        <span class="slider">
+            <div class="star star_1"></div>
+            <div class="star star_2"></div>
+            <div class="star star_3"></div>
+            <svg viewBox="0 0 16 16" class="cloud_1 cloud">
+            <path
+                transform="matrix(.77976 0 0 .78395-299.99-418.63)"
+                fill="#fff"
+                d="m391.84 540.91c-.421-.329-.949-.524-1.523-.524-1.351 0-2.451 1.084-2.485 2.435-1.395.526-2.388 1.88-2.388 3.466 0 1.874 1.385 3.423 3.182 3.667v.034h12.73v-.006c1.775-.104 3.182-1.584 3.182-3.395 0-1.747-1.309-3.186-2.994-3.379.007-.106.011-.214.011-.322 0-2.707-2.271-4.901-5.072-4.901-2.073 0-3.856 1.202-4.643 2.925"
+            ></path>
+            </svg>
+        </span>
+    </label>
+
+    <a class="py-1 px-2" href="/">Home</a>
+    <a class="py-1 px-2" href="/about">About</a>
+    <a class="py-1 px-2" href="/projects">Projects</a>
+    <a class="py-1 px-2" href="/contact">Contact</a>
+    </nav>
+  </div>
+
+    <div
+        id="menu-backdrop"
+        class={`
+        absolute bg-gray-400/30 dark:bg-white/20 backdrop-blur-xl rounded
+        translate-x-[var(--left)] translate-y-[var(--top)]
+        w-[var(--width)] h-[var(--height)]
+        left-0 top-0
+        transition-all duration-500
+        ease-in-out opacity-0 -z-10
+        `}
+    ></div>
+</header>
+
+<script>
+    const listItem = document.querySelectorAll("#landing-header a")
+    const menuBackdrop = document.querySelector("#menu-backdrop") as HTMLElement
+    const headerElement = document.querySelector('header') as HTMLElement
+
+    listItem.forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+        const itemRect = item.getBoundingClientRect()
+        const headerRect = headerElement.getBoundingClientRect()
+        
+        const left = itemRect.left - headerRect.left
+        const top = itemRect.top - headerRect.top
+        
+        menuBackdrop.style.setProperty("--left", `${left}px`)
+        menuBackdrop.style.setProperty("--top", `${top}px`)
+        menuBackdrop.style.setProperty("--width", `${itemRect.width}px`)
+        menuBackdrop.style.setProperty("--height", `${itemRect.height}px`)
+        menuBackdrop.style.opacity = "1"
+        menuBackdrop.style.visibility = "visible"
+    })
+        item.addEventListener("mouseleave", ()=>{
+            menuBackdrop.style.opacity = "0"
+            menuBackdrop.style.visibility = "hidden"
+
+        })
+    })
+</script>
+
+<script>
+    const headerEl = document.querySelector('#landing-header') as HTMLElement
+    const obserserOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.90,
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const { isIntersecting } = entry
+            if (isIntersecting){
+                const color = entry.target.getAttribute("data-header-color")
+                if (color) {
+                    headerEl.style.color = color;
+                } else {
+                    console.warn('El atributo data-header-color es null.');
+                }
+            }
+        })
+    }, obserserOptions)
+
+    const sectionsElement = document.querySelectorAll('.landing-section')
+    sectionsElement.forEach((section) => observer.observe(section))
+</script>
