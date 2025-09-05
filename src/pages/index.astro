@@ -12,53 +12,44 @@ import ilustracion from '../assets/img/miCaricatura.webp'
 <Layout 
 title="Portfolio de Palomeque - Desarrollador web"
 description="">
-<main class="min-h-screen flex flex-col items-center justify-center px-5 sm:px-8">
-  <section class="flex flex-col items-center text-center">
-    <div class="flex flex-col justify-center items-center">
-      
-      <!-- Título -->
-      <h1 id="typing-text"
-        class="font-mono max-w-5xl font-bold bg-gradient-to-r from-blue-500 to-pink-600 bg-clip-text text-transparent 
-               text-4xl sm:text-5xl md:text-6xl lg:text-7xl my-6 p-1 animated">
-      </h1>
+<main class="min-h-screen flex flex-col items-center justify-center">
+	<section class="flex flex-col">
+		<div class="flex flex-col justify-center items-center">
+			<h1 id="typing-text" class="font-monospace max-w-5xl font-bold bg-gradient-to-r from-blue-500 to-pink-600 bg-clip-text text-transparent text-5xl my-5 p-1 animated">
+			</h1>
+			<Bagde>Disponible para trabajar</Bagde>
+			<p class="font-sans max-w-4xl text-gray-700 dark:text-white text-xl my-5 text-center">
+				<span class="font-bold text-black dark:text-amber-100">Desarrollador Frontend con conocimientos en backend, ubicado en Colombia.</span>
+				Me especializo en crear sitios web responsivos y visualmente atractivos, combinando un diseño UI limpio con funcionalidad sólida. Aunque mi enfoque principal es el desarrollo frontend, también aprovecho las tecnologías backend para entregar soluciones web completas.
+			</p>
+		</div>
 
-      <!-- Badge -->
-      <Bagde class="mt-2">Disponible para trabajar</Bagde>
+		<nav class="flex justify-center space-x-2 p-1">
+			<SocialPill
+			href="https://www.linkedin.com/in/camilo-palomeque-2b25322ba/"
+			>
+				<LinkedInIcon class="size-6"/>
+				LinkedIn
+			</SocialPill>
 
-      <!-- Descripción -->
-      <p
-        class="font-sans max-w-3xl md:max-w-4xl text-gray-700 dark:text-white 
-               text-lg sm:text-xl md:text-2xl my-6 leading-relaxed px-2">
-        <span class="font-bold text-black dark:text-amber-100">
-          Desarrollador Frontend con conocimientos en backend, ubicado en Colombia.
-        </span>
-        Me especializo en crear sitios web responsivos y visualmente atractivos, combinando un diseño UI limpio con
-        funcionalidad sólida. Aunque mi enfoque principal es el desarrollo frontend, también aprovecho las tecnologías
-        backend para entregar soluciones web completas.
-      </p>
-    </div>
-
-    <!-- Social Pills -->
-    <nav class="flex flex-wrap justify-center gap-4 p-2 mt-6">
-      <SocialPill href="https://www.linkedin.com/in/camilo-palomeque-2b25322ba/">
-        <LinkedInIcon class="size-6" />
-        LinkedIn
-      </SocialPill>
-
-      <SocialPill href="https://github.com/Camilo-Pal0">
-        <GitHubIcon class="size-6" />
-        GitHub
-      </SocialPill>
-
-      <SocialPill href="mailto:camilopalomeque79@gmail.com">
-        <MailIcon class="size-6" />
-        Camilopalomeque79@gmail.com
-      </SocialPill>
-    </nav>
-  </section>
+			<SocialPill
+			href="https://github.com/Camilo-Pal0"
+			>
+				<GitHubIcon class="size-6"/>
+				GitHub
+			</SocialPill>
+			<SocialPill
+			href="mailto:camilopalomeque79@gmail.com"
+			>
+				<MailIcon class="size-6"/>
+				Camilopalomeque79@gmail.com
+			</SocialPill>
+		</nav>
+	</section>
+    
 </main>
 
-  <!-- animación script-->
+<!-- animación script-->
 <script is:inline>
 class TypingAnimation {
     constructor(elementId, phrases, options = {}) {
